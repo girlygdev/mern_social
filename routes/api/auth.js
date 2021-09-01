@@ -52,6 +52,7 @@ router.post('/', userLoginValidator, async (req, res) => {
     }
 
     if (user) {
+      // Compare password compare(stringPassword, hashedPassword)
       let validPassword = await bcrypt.compare(password, user.password);
 
       if (validPassword) {
