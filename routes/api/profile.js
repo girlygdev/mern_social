@@ -36,7 +36,7 @@ router.get('/me', auth, async (req, res) => {
 
 /**
  * @route  POST api/profile
- * @desc   Create user profile
+ * @desc   Create and update user profile
  * @access Private
  */
 router.post('/', [auth, createProfileValidator], async (req, res) => {
