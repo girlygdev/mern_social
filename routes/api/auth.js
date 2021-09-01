@@ -32,8 +32,8 @@ router.get('/', auth, async (req, res) => {
 
 
 /**
- * @route  POST api/users
- * @desc   Register user
+ * @route  POST api/auth
+ * @desc   Authenticate user credentials and pass in JWT
  * @access Public
  */
 router.post('/', userLoginValidator, async (req, res) => {
