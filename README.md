@@ -1,2 +1,2 @@
 # mern_social
-Learning mern stack 
+Learning mern stack
