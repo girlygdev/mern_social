@@ -75,6 +75,6 @@ router.post('/', userValidator, async (req, res) => {
     console.error(error.message);
     res.status(500).send('Server error');
   }  
-})
+});
 
 module.exports = router;
