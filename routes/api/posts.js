@@ -224,7 +224,8 @@ router.put('/:post_id/comments', [auth, validateComment], async (req, res) => {
     const newComment = {
       user: userID,
       text: req.body.text,
-      name: user.name
+      name: user.name,
+      avatar: user.avatar
     }
 
     post.comments.unshift(newComment)
