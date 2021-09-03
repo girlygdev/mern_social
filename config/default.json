@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://gilSocial:gilSocial123@social.5xhcs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "mysecrettoken"
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "070f73159bcb4045af3b",
+  "githubClientSecret" : "0ef639b6b8fb4583145a7f7159423821598aabea"
 }
