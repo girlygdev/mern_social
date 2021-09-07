@@ -1,13 +1,20 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { login } from '../../actions/auth'
+import PropTypes from 'prop-types'
 
-const Login = () => {
+const Login = ({ onLoginUser, isAuthenticated }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  
   const onSubmit = e => {
     e.preventDefault()
-    alert()
+    onLoginUser(email, password);
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />
   }
 
   return (
@@ -44,4 +51,18 @@ const Login = () => {
   )
 }
 
-export default Login
+Login.propTypes = {
+  onLoginUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+const mapActionsToProps = {
+  onLoginUser: login
+}
+
+
+export default connect(mapStateToProps, mapActionsToProps)(Login)

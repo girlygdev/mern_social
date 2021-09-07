@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAlert } from '../../actions/alert'
+import { register } from '../../actions/auth'
+
 import PropTypes from 'prop-types'
 
-const Register = ({ onSetAlert }) => {
+const Register = ({ onSetAlert, onRegister, isAuthenticated }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,20 +26,11 @@ const Register = ({ onSetAlert }) => {
       password
     }
 
-    // try {
-    //   const config = {
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   }
+    onRegister(data)
+  }
 
-    //   const body = JSON.stringify(data)
-
-    //   const res = await axios.post('/api/users', body, config)
-    //   console.log(res.data)
-    // } catch (error) {
-    //   console.log(error.response.data)
-    // }    
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />
   }
 
   return (
@@ -99,12 +92,17 @@ const Register = ({ onSetAlert }) => {
 
 Register.propTypes = {
   onSetAlert: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 }
 
-const mapStateToProps = null
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
   
 const mapActionsToProps = {
-  onSetAlert: setAlert
+  onSetAlert: setAlert,
+  onRegister: register,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Register)
