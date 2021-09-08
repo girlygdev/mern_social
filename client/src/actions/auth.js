@@ -5,7 +5,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
-  LOGOUT
+  LOGOUT,
+  CLEAR_PROFILE
 } from './types'
 import { setAlert } from './alert'
 import axios from 'axios'
@@ -50,8 +51,6 @@ export const register = ({ name, email, password }) => async dispatch => {
     })
 
     dispatch(loadUser())
-
-    console.log(res.data)
   } catch (error) {
     const errorData = error.response.data
     console.log('ERROR:::' + error.response.data)
@@ -86,6 +85,8 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_SUCCESS,
       payload: res.data
     })
+
+    dispatch(loadUser())
   } catch (error) {
     const errorData = error.response.data
     console.log('ERROR:::' + error.response.data)
@@ -105,7 +106,6 @@ export const login = (email, password) => async dispatch => {
 }
 
 export const logout = () => dispatch => {
-  dispatch({
-    type: LOGOUT
-  })
+  dispatch({ type: LOGOUT })
+  dispatch({ type: CLEAR_PROFILE })
 }

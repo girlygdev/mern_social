@@ -6,6 +6,7 @@ const request = require('request');
 const config = require('config');
 
 const Profile = require ('../../models/Profile');
+const Post = require('../../models/Post');
 
 const createProfileValidator = [
   check('company', 'Company is required').not().isEmpty(),
@@ -23,8 +24,7 @@ const profileEducationValidator = [
   check('school', 'School is required').not().isEmpty(),
   check('degree', 'Degree is required').not().isEmpty(),
   check('field_of_study', 'Field of study is required').not().isEmpty(),
-  check('from', 'From date is required').not().isEmpty(),
-  check('to', 'To date is required').not().isEmpty()
+  check('from', 'From date is required').not().isEmpty()
 ];
 
 /**
@@ -88,8 +88,8 @@ router.post('/', [auth, createProfileValidator], async (req, res) => {
     if (status) profileData.status = status;    
     if (bio) profileData.bio = bio;
     if (githubusername) profileData.githubusername = githubusername;
-    if (experience || experience.length > 0) profileData.experience = experience;
-    if (education || education.length > 0) profileData.education = education;
+    // if (experience || experience.length > 0) profileData.experience = experience;
+    // if (education || education.length > 0) profileData.education = education;
     if (skills) profileData.skills = skills.split(',').map(s => s.trim());
     
     profileData.social = {}
@@ -162,13 +162,14 @@ router.get('/user/:user_id', async (req, res) => {
  * @desc   Delete user profile by id
  * @access Public
 */
-router.delete('/user/:user_id', async (req, res) => {
+router.delete('/', auth, async (req, res) => {
   try {
     // Delete profile posts
-    await Profile.findOneAndRemove({ user: req.params.user_id });
-    await User.findOneAndRemove({ _id: req.params.user_id});    
+    await Post.deleteMany({ user: req.user.id })
+    await Profile.findOneAndRemove({ user: req.user.id });
+    await User.findOneAndRemove({ _id: req.user.id });    
 
-    res.json({ msg: 'Profile deleted'});    
+    res.json({ msg: 'User deleted'});    
   } catch (error) {
     console.error(error.message)
 

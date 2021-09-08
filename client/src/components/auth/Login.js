@@ -19,11 +19,11 @@ const Login = ({ onLoginUser, isAuthenticated }) => {
 
   return (
     <div>
-      <h1 class="large text-primary">Sign In</h1>
-      <p class="lead"><i class="fas fa-user"></i> Sign into Your Account</p>
+      <h1 className="large text-primary">Sign In</h1>
+      <p className="lead"><i className="fas fa-user"></i> Sign into Your Account</p>
       
-      <form class="form" onSubmit={onSubmit}>
-        <div class="form-group">
+      <form className="form" onSubmit={onSubmit}>
+        <div className="form-group">
           <input
             type="email"
             placeholder="Email Address"
@@ -33,7 +33,7 @@ const Login = ({ onLoginUser, isAuthenticated }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div class="form-group">
+        <div className="form-group">
           <input
             type="password"
             placeholder="Password"
@@ -42,9 +42,9 @@ const Login = ({ onLoginUser, isAuthenticated }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input type="submit" class="btn btn-primary" value="Login" />
+        <input type="submit" className="btn btn-primary" value="Login" />
       </form>
-      <p class="my-1">
+      <p className="my-1">
         Don't have an account? <Link to="register">Sign Up</Link>
       </p>
     </div>
