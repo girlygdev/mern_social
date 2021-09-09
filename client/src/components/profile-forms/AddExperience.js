@@ -28,10 +28,6 @@ const AddExperience = ({ addExperience, history }) => {
   } = formData
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value})
-  
-  const onCheck = e => {
-    console.log(e.target)
-  }
 
   const onSubmit = e => {
     e.preventDefault()

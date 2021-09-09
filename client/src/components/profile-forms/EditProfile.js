@@ -23,7 +23,6 @@ const EditProfile = ({ profile: { profile, loading }, updateCurrentProfile, getC
   const [displaySocialInputs, toggleSocialInputs] = useState(false)
 
   useEffect(() => {
-    console.log('get profile')
     getCurrentProfile()
 
     if (profile) {
@@ -42,7 +41,7 @@ const EditProfile = ({ profile: { profile, loading }, updateCurrentProfile, getC
         instagram: loading || !profile.social ? '' : profile.social.instagram,
       })
     }    
-  }, [])
+  }, [getCurrentProfile, loading, profile])
 
   const {
     company,

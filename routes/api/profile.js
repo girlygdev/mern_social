@@ -158,7 +158,7 @@ router.get('/user/:user_id', async (req, res) => {
 });
 
 /**
- * @route  DELETE api/profiles
+ * @route  DELETE api/profile
  * @desc   Delete user profile by id
  * @access Public
 */
