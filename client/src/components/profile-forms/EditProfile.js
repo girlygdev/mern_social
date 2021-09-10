@@ -41,7 +41,7 @@ const EditProfile = ({ profile: { profile, loading }, updateCurrentProfile, getC
         instagram: loading || !profile.social ? '' : profile.social.instagram,
       })
     }    
-  }, [getCurrentProfile, loading, profile])
+  }, [profile])
 
   const {
     company,

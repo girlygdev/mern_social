@@ -18,7 +18,7 @@ const Navbar = ({ auth, onLogout }) => {
         </Link>
       </li>
       <li>
-        <a onClick={onLogout} href={"#"}>
+        <a onClick={onLogout} href={"/login"}>
           <i className="fas fa-sign-out-alt"></i> {' '}
           <span className="hide-sm">Logout</span>
         </a>
