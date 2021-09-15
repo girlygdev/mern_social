@@ -2,3 +2,4 @@ node_modules/
 devconnector_html_theme/
 __MACOSX/
 client/node_modules/
+config/default.json
