@@ -13,10 +13,8 @@ import axios from 'axios'
 import setAuthToken from '../utils/setAuthToken'
 
 export const loadUser = () => async dispatch => {
-  const token = localStorage.getItem('token')
-
-  if (token) {
-    setAuthToken(token)
+  if (localStorage.token) {
+    setAuthToken(localStorage.token)
   }
 
   try {

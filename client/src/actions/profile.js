@@ -8,6 +8,11 @@ import {
   GET_REPOS } from "./types"
 import { setAlert } from './alert'
 import axios from 'axios'
+import setAuthToken from '../utils/setAuthToken'
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 
 // Get current user profile
 export const getCurrentProfile = () => async dispatch => {
