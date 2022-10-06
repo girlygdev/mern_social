@@ -1,2 +1,2 @@
 # mern_social
-Learning mern stack
+Simple social networking app built with MERN stack
